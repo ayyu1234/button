@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .back-button {
+            position: absolute;
+            font-family: Arial;
+            top: 15px;
+            left: 15px;
+            padding: 10px;
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: white;
+            font-family: Arial;
+            color: #8B0000;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .payment-option {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 16px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            background-color: #8B0000;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            max-width: 150px;
+        }
+        .button:hover {
+            background-color: white;
+            color: #8B0000;
+            transform: scale(1.05);
+        }
+        .details {
+            display: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #8B0000;
+            text-align: left;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .copy-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .copy-button {
+            padding: 6px 12px;
+            font-size: 14px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .copy-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        .bank-details, .cheque-details {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        .divider {
+            height: 1px;
+            background: #ddd;
+            margin: 10px 0;
+        }
+        img {
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin: 15px auto 0;
+        }
+.secure-message {
+            background-color: #d4f8d4; /* Halka halka light green */
+            color: darkgreen;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='https://www.stareng.co.in'">← Back</button>
+    <div class="container">
+        <h2>🔹 Select Payment Method 🔹</h2>
+        <div class="payment-option">
+            <button class="button" onclick="showDetails('upi')">UPI</button>
+            <button class="button" onclick="showDetails('bank')">Bank Transfer</button>
+            <button class="button" onclick="showDetails('cheque')">Cheque/DD</button>
+        </div>
+
+        <!-- UPI Payment Details -->
+        <div id="upi" class="details">
+            <p><strong>UPI ID:</strong></p>
+            <div class="copy-container">
+                <span id="upiText">9702485922@paytm</span>
+                <button class="copy-button" onclick="copyUPI()">Copy</button>
+            </div>
+            <img src="https://i.postimg.cc/Kv7y166W/upi-1743165453708.png" alt="UPI QR Code">
+<div class="secure-message">✅ Secure & Verified Details</div>
+        </div>
+
+        <!-- Bank Transfer Details -->
+        <div id="bank" class="details bank-details">
+            <h3>🌐 NEFT / RTGS / IMPS / Bank Transfer</h3>
+            <div class="divider"></div>
+            <p>🏦 <strong>Bank Name:</strong> Punjab National Bank Ltd.</p>
+            <div class="divider"></div>
+            <p>👤 <strong>Account Holder:</strong> STAR ENGINEERING</p>
+            <div class="divider"></div>
+            <p>💳 <strong>Account No.:</strong> 05211011003149</p>
+            <div class="divider"></div>
+            <p>🔢 <strong>IFSC Code:</strong> PUNB0052110</p>
+            <div class="divider"></div>
+            <p>📍 <strong>Branch:</strong> Goregaon (E), Mumbai</p>
+<div class="divider"></div>
+<div class="secure-message">✅ Secure & Verified Details</div>
+        </div>
+
+        <!-- Cheque/DD Details -->
+        <div id="cheque" class="details cheque-details">
+            <h3>📄 Cheque / Demand Draft (DD)</h3>
+            <div class="divider"></div>
+            <p>✍️ <strong>Write "A/C Payee" on the cheque.</strong></p>
+            <div class="divider"></div>
+            <p>👤 <strong>Pay to:</strong> STAR ENGINEERING</p>
+            <div class="divider"></div>
+            <p>📝 <strong>Additional Info:</strong> Submit a proper and completed cheque at shop with proper signature and mention invoice no. on back side.</p>
+   <div class="divider"></div>
+<div class="secure-message">✅ Secure & Verified Details</div>
+            <div class="divider"></div>
+        </div>
+    </div>
+    
+    <script>
+        function showDetails(type) {
+            document.getElementById('upi').style.display = 'none';
+            document.getElementById('bank').style.display = 'none';
+            document.getElementById('cheque').style.display = 'none';
+            document.getElementById(type).style.display = 'block';
+        }
+        function copyUPI() {
+            const upiText = document.getElementById("upiText").innerText;
+            navigator.clipboard.writeText(upiText).then(() => {
+                alert("✅ UPI ID copied: " + upiText);
+            });
+        }
+    </script>
+</body>
+</html>
